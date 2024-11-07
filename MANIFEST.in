@@ -1,0 +1,18 @@
+include *.txt
+include *.md
+include *.pkl
+recursive-include ./patient_survival_prediction_model *
+
+include patient_survival_prediction_model/datasets/heart_failure_clinical_records_dataset.csv
+include patient_survival_prediction_model/datasets/test.csv
+include patient_survival_prediction_model/trained_models/*.pkl
+include patient_survival_prediction_model/VERSION
+include patient_survival_prediction_model/config.yml
+
+include ./requirements/requirements.txt
+include ./requirements/test_requirements.txt
+exclude *.log
+exclude *.cfg
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
