@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 from fastapi import APIRouter, HTTPException
 from fastapi.encoders import jsonable_encoder
-from bikeshare_model import __version__ as model_version
-from bikeshare_model.predict import make_prediction
+from patient_survival_prediction_model import __version__ as model_version
+from patient_survival_prediction_model.predict import make_prediction
 
 from app import __version__, schemas
 from app.config import settings
