@@ -1,7 +1,7 @@
 # pull python base image
 FROM python:3.10
 # copy application files
-ADD /patient_survival_prediction_model /bikeshare_model_api/
+ADD /patient_survival_prediction_model_api /patient_survival_prediction_model_api/
 # specify working directory
 WORKDIR /patient_survival_prediction_model_api
 # update pip

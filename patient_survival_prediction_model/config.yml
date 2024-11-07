@@ -1,0 +1,46 @@
+# Package Overview
+package_name: patient_survival_prediction_model
+
+# Data Files
+training_data_file: heart_failure_clinical_records_dataset.csv
+
+# Variables
+# The variable we are attempting to predict (cnt)
+target: DEATH_EVENT
+
+pipeline_name: patient_survival_prediction_model
+pipeline_save_file: patient_survival_prediction_model_output_v
+
+# Features that will go inside processing pipeline
+features:
+  - age
+  - anaemia
+  - creatinine_phosphokinase
+  - diabetes
+  - ejection_fraction
+  - high_blood_pressure
+  - platelets
+  - serum_creatinine
+  - serum_sodium
+  - sex
+  - smoking
+  - time         
+
+
+# Features names
+creatinine_phosphokinase_var: creatinine_phosphokinase
+ejection_fraction_var: ejection_fraction
+platelets_var: platelets
+serum_creatinine_var: serum_creatinine
+serum_sodium_var: serum_sodium
+  
+# Set train/test split
+test_size: 0.20
+
+# Set the random seed
+random_state: 42
+
+# Alogrithm parameters
+n_estimators: 100
+max_depth: 10
+max_leaves: 5
