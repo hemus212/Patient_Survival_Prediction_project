@@ -28,12 +28,19 @@ features:
 
 
 # Features names
+age_var : age
+anaemia_var : anaemia
 creatinine_phosphokinase_var: creatinine_phosphokinase
+diabetes_var : diabetes
 ejection_fraction_var: ejection_fraction
+high_blood_pressure_var: high_blood_pressure
 platelets_var: platelets
 serum_creatinine_var: serum_creatinine
 serum_sodium_var: serum_sodium
-  
+sex_var: sex
+smoking_var: smoking
+time_var: time
+
 # Set train/test split
 test_size: 0.20
 

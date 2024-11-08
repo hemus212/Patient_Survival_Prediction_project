@@ -43,11 +43,18 @@ class ModelConfig(BaseModel):
     target: str
     features: List[str]
 
+    age_var : str
+    anaemia_var : str
     creatinine_phosphokinase_var: str
+    diabetes_var : str
     ejection_fraction_var: str
+    high_blood_pressure_var: str
     platelets_var: str
     serum_creatinine_var: str
     serum_sodium_var: str
+    sex_var: str
+    smoking_var: str
+    time_var: str
 
     test_size:float
     random_state: int
