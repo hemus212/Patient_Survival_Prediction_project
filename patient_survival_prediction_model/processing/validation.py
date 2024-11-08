@@ -14,10 +14,12 @@ from pydantic import BaseModel, ValidationError
 from patient_survival_prediction_model.config.core import config
 
 
+
+
 def validate_inputs(*, input_df: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[dict]]:
     """Check model inputs for unprocessable values."""
 
-    validated_data = input_df[config.self_model_config.features].copy()
+    '''validated_data = input_df[config.self_model_config.features].copy()
     errors = None
 
     try:
@@ -28,22 +30,37 @@ def validate_inputs(*, input_df: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[d
     except ValidationError as error:
         errors = error.json()
 
-    return validated_data, errors
+    return validated_data, errors'''
+    
+
+    pre_processed = input_df
+    validated_data = pre_processed[config.model_config.features].copy()
+    errors = None
+
+    try:
+        # replace numpy nans so that pydantic can validate
+        MultipleDataInputs(
+            inputs = validated_data.replace({np.nan: None}).to_dict(orient="records")
+        )
+    except ValidationError as error:
+        errors = error.json()
+
+    return validated_data
 
 class DataInputSchema(BaseModel):
     age: Optional[int]
-    high_blood_pressure: Optional[int]
     anaemia: Optional[int]
     creatinine_phosphokinase: Optional[int]
     diabetes: Optional[int]
     ejection_fraction: Optional[int]
-    platelets: Optional[int]
-    sex: Optional[int]
-    serum_creatinine: Optional[int]
+    high_blood_pressure: Optional[int]
+    platelets: Optional[float]
+    serum_creatinine: Optional[float]
     serum_sodium: Optional[int]
+    sex: Optional[int]
     smoking: Optional[int]
     time: Optional[int]
 
-
+    
 class MultipleDataInputs(BaseModel):
     inputs: List[DataInputSchema]

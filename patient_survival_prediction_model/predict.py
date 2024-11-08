@@ -23,7 +23,9 @@ def make_prediction(*, input_data: Union[pd.DataFrame, dict]) -> dict:
     """Make a prediction using a saved model """
     logging.basicConfig(filename="app.log", level=logging.DEBUG)
     try:
+        
         validated_data, errors = validate_inputs(input_df = pd.DataFrame(input_data))
+        print(errors)
         
         validated_data = validated_data.reindex(columns = config.self_model_config.features)
         
@@ -45,7 +47,7 @@ def make_prediction(*, input_data: Union[pd.DataFrame, dict]) -> dict:
 
 if __name__ == "__main__":
 
-    data_in = {'age': [30], 'high_blood_pressure': [0], 'anaemia': [0], 'creatinine_phosphokinase': [6200], 'diabetes': [1],
-               'ejection_fraction': [58], 'platelets': [60000], 'sex': [1], 'serum_creatinine': [0], 'serum_sodium': [153], 'smoking': [0], 'time': [100]}
-
-    make_prediction(input_data = data_in)
+    data_in = {'age': [30],'anaemia': [0], 'creatinine_phosphokinase': [6200], 'diabetes': [1],
+               'ejection_fraction': [58], 'high_blood_pressure': [0],'platelets': [60000.0], 'serum_creatinine': [0.9], 'serum_sodium': [153], 'sex': [1],'smoking': [0], 'time': [100]}
+    print(make_prediction(input_data = data_in))
+    #make_prediction(input_data = data_in)

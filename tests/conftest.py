@@ -14,12 +14,13 @@ from patient_survival_prediction_model.processing.data_manager import load_datas
 @pytest.fixture
 def sample_input_data():
     data = load_dataset(file_name = config.app_config.training_data_file)
-
+    X = data.drop(config.self_model_config.target, axis=1)       # predictors
+    y = data[config.self_model_config.target]      
     # divide train and test
     X_train, X_test, y_train, y_test = train_test_split(
         
-        data[config.self_model_config.features],     # predictors
-        data[config.self_model_config.target],       # target
+        X,     # predictors
+        y,       # target
         test_size = config.self_model_config.test_size,
         random_state=config.self_model_config.random_state,   # set the random seed here for reproducibility
     )
