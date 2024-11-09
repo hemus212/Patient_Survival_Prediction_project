@@ -7,8 +7,7 @@ from patient_survival_prediction_model.processing.validation import DataInputSch
 class PredictionResults(BaseModel):
     errors: Optional[Any]
     version: str
-    #predictions: Optional[List[int]]
-    predictions: Optional[int]
+    predictions: Optional[str]
 
 
 class MultipleDataInputs(BaseModel):
@@ -19,19 +18,18 @@ class MultipleDataInputs(BaseModel):
             "example": {
                 "inputs": [
                     {
-                "dteday": "2012-11-05", # datetime.datetime.strptime("2012-11-05", "%Y-%m-%d"),  
-                "season": "winter", 
-                "hr": "6am",
-                "holiday": "No", 
-                "weekday": "Mon",
-                "workingday": "Yes",
-                "weathersit": "Mist",
-                "temp": 6.10,
-                "atemp": 3.0014,
-                "hum": 19.0012,	
-                "windspeed": 19.0012,
-                "yr": 2012,
-                "mnth": "November",
+                        "age": 75,
+                        "anaemia": 0,
+                        "creatinine_phosphokinase": 0,
+                        "diabetes": 0,
+                        "ejection_fraction": 0,
+                        "high_blood_pressure": 0,
+                        "platelets": 0,
+                        "serum_creatinine": 0,
+                        "serum_sodium": 0,
+                        "sex": 0,
+                        "smoking": 0,
+                        "time": 0 
                     }
                 ]
             }

@@ -5,7 +5,7 @@ requests>=2.23.0,<2.24.0
 
 # testing requirements
 pytest>=6.2.3,<6.3.0
-
+pydantic-settings
 # repo maintenance tooling 
 #black>=22.0.0,<23.0.0
 #flake8>=3.9.0,<3.10.0

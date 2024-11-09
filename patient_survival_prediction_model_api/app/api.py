@@ -8,7 +8,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.encoders import jsonable_encoder
 from patient_survival_prediction_model import __version__ as model_version
 from patient_survival_prediction_model.predict import make_prediction
-
+from schemas import PredictionResults
 from app import __version__, schemas
 from app.config import settings
 
@@ -37,5 +37,13 @@ async def predict(input_data: schemas.MultipleDataInputs) -> Any:
 
     if results["errors"] is not None:
         raise HTTPException(status_code=400, detail=json.loads(results["errors"]))
-
-    return results
+    
+    if isinstance(results["predictions"], (list, np.ndarray)):
+        prediction = results["predictions"][0]
+    else:
+        prediction = results["predictions"]
+        
+    return PredictionResults(
+        errors=results.get("errors"),
+        version=results.get("version", "unknown"),
+        predictions=prediction)
