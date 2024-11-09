@@ -1,9 +1,14 @@
 import sys
 from typing import List
-
+import pandas as pd
 from pydantic import AnyHttpUrl
 from pydantic_settings import BaseSettings
+from patient_survival_prediction_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
+from pathlib import Path
+import prometheus_client as prom
 
+test_data = pd.read_csv(Path(f"{DATASET_DIR}/heart_failure_clinical_records_dataset.csv")) 
+r2_metric = prom.Gauge('patient_survival_score', 'R2 score for random 100 testsamples')
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
 
